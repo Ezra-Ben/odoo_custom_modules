@@ -1,0 +1,32 @@
+<record id="view_user_update_profile_form" model="ir.ui.view">
+    <field name="name">user.profile.form</field>
+    <field name="model">res.users</field> <!-- Use the default res.users model here -->
+    <field name="arch" type="xml">
+        <form string="User Profile">
+            <group>
+                <field name="name" string="Full Name" />
+                <field name="skills" string="Skills" />
+                <field name="portfolio_url" string="Portfolio URL" />
+                <field name="certifications" string="Certifications" />
+                <field name="image_1920" widget="image" string="Profile Picture" />
+                <field name="profile_visibility" string="Profile Visibility" />
+            </group>
+            <footer>
+                <button string="Save" type="object" name="action_save_profile" class="btn-primary"/>
+            </footer>
+        </form>
+    </field>
+</record>
+
+<!-- Action for User Profile Update Form -->
+    <record id="action_user_profile_update_form" model="ir.actions.act_window">
+        <field name="name">Update Profile</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_user_update_profile_form"/>
+        <field name="target">current</field>
+    </record>
+
+<!-- Submenu for user profile update form -->
+    <menuitem id="user_profile_update_menu" name="Update Profile" parent="user_profile_menu" 
+              action="action_user_profile_update_form" sequence="3" />            

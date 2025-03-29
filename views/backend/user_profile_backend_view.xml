@@ -1,0 +1,45 @@
+<odoo>
+    <record id="view_user_profile_form" model="ir.ui.view">
+        <field name="name">user.profile.form</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <form string="User Profile">
+                <group>
+                    <field name="name" string="Full Name" readonly="1"/>
+                    <field name="skills" string="Skills" readonly="1"/>
+                    <field name="portfolio_url" string="Portfolio URL" readonly="1"/>
+                    <field name="certifications" string="Certifications" readonly="1"/>
+                    <field name="profile_picture" widget="image" string="Profile Picture" readonly="1"/>
+                    <field name="profile_visibility" string="Profile Visibility" readonly="1"/>
+                </group>
+                <footer>
+                    <button string="Edit Profile" type="action" name="%(action_user_profile_update_form)s" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
+
+<!--Action for Viewing User Profile Form-->
+   <record id="action_view_user_profile" model="ir.actions.act_window">
+    <field name="name">View Profile</field>
+    <field name="res_model">res.users</field>  <!-- Using res.users to allow users to view their profile -->
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="view_user_profile_form"/>
+    <field name="target">current</field> <!-- Open in the current window -->
+    <field name="domain">[('id', '=', uid)]</field>  <!-- Ensure the current logged-in user is shown -->
+   </record>
+
+ <!--Submenu for for user profile view-->
+    <menuitem id="view_profile_menu" name="View Profile" parent="user_profile_menu"
+              action="action_view_user_profile" sequence="1"/>   
+
+ <!-- Action for Editing User Profile -->
+    <record id="action_edit_user_profile" model="ir.actions.act_window">
+        <field name="name">Edit Profile</field>
+        <field name="res_model">res.users</field> <!-- Use res.users to edit the user's profile -->
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_user_update_profile_form"/>
+        <field name="target">current</field> <!-- Open in the current window -->
+        <field name="domain">[('id', '=', uid)]</field> <!-- Ensure the current logged-in user is shown -->
+    </record>             

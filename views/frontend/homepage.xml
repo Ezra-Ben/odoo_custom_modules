@@ -1,0 +1,19 @@
+<odoo>
+    <template id="homepage_template" name="Custom Homepage" priority="1">
+        <t t-call="website.layout">
+            <div id="wrapwrap" class="container mt-5 text-center">
+                <h1>Welcome to the Custom Homepage</h1>
+
+                    <!-- Register Button (Linking to your existing route) -->
+                    <a href="/user/register" class="btn btn-secondary m-2">Register</a>
+
+                    <!-- View Profile Button (Linking to your existing route) -->
+                    <a href="/my/profile" class="btn btn-secondary m-2">View Profile</a>
+
+                    <!-- Update Profile Button (Linking to your existing route) -->
+                    <a href="/my/profile/update" class="btn btn-primary m-2">Update Profile</a>
+            
+            </div>
+        </t>
+    </template>
+</odoo>

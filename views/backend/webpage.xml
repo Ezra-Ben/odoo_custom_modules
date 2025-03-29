@@ -1,0 +1,57 @@
+<odoo>
+<record id="view_module_homepage_kanban" model="ir.ui.view">
+    <field name="name">module.homepage.kanban</field>
+    <field name="model">module.homepage</field>
+    <field name="arch" type="xml">
+        <kanban>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="o_kanban_record">
+                        <!-- Register Button -->
+                        <button name="action_open_registration_form"
+                                type="object"
+                                string="Register"
+                                class="btn btn-primary"/>
+
+                        <!-- View Profile Button -->
+                        <button name="action_open_profile_view"
+                                type="object"
+                                string="View Profile"
+                                class="btn btn-secondary"/>
+
+                        <!-- Update Profile Button -->
+                        <button name="action_open_profile_update"
+                                type="object"
+                                string="Update Profile"
+                                class="btn btn-primary"/>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
+    <!-- Define the Action to open Homepage -->
+        <record id="action_module_homepage" model="ir.actions.act_window">
+            <field name="name">Homepage</field>
+            <field name="res_model">module.homepage</field>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="view_module_homepage_kanban"/>
+            <field name="target">current</field>
+        </record>
+
+        <!-- Define the Menu item to access Homepage -->
+        <menuitem id="menu_module_homepage"
+                name="Homepage"
+                action="action_module_homepage"
+                parent="base.menu_apps"/> <!-- You can replace this with the correct parent menu -->
+    
+
+         <!-- Website Menu Item -->
+    <record id="website_homepage_menu" model="website.menu">
+        <field name="name">Custom Homepage</field>
+        <field name="url">/custom/homepage</field>
+        <field name="parent_id" ref="website.main_menu"/>
+    </record> 
+    
+    </odoo>

@@ -1,0 +1,43 @@
+<odoo>
+    <template id="user_profile_update_form" name="Update User Profile">
+        <t t-call="website.layout">
+            <div id="wrapwrap" class="container mt32">
+                <h1>Update Your Profile</h1>
+                <t t-if="user">
+                <form action="/my/profile/update" method="POST" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="name">Full Name</label>
+                            <input type="text" name="name" id="name" class="form-control" t-att-value="user.name"/>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="skills">Skills</label>
+                            <textarea name="skills" id="skills" class="form-control"><t t-esc="user.skills"/></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="portfolio_url">Portfolio URL</label>
+                            <input type="text" name="portfolio_url" id="portfolio_url" class="form-control" t-att-value="user.portfolio_url"/>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="certifications">Certifications</label>
+                            <textarea name="certifications" id="certifications" class="form-control"><t t-esc="user.certifications"/></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="profile_picture">Profile Picture</label>
+                            <input type="file" name="profile_picture" id="profile_picture" class="form-control"/>
+                        </div>
+                    </div>
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <button type="submit" class="btn btn-primary mt-3">Save</button>
+                </form>
+                </t>
+                <t t-else="">
+                    <div class="alert alert-warning">Please log in to update your profile.</div>
+                    <div class="col-md-12">
+                       <a href="/web/login" class="btn btn-primary mt-3">Login</a>
+                    </div>
+                </t>    
+            </div>
+        </t>
+    </template>
+</odoo>

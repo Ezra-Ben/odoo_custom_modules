@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_user_registration_user,user.registration.user,model_user_registration,base.group_user,1,1,1,1
+access_user_registration_manager,user.registration.manager,model_user_registration,base.group_system,1,1,1,1
+access_user_registration_public,user.registration.public,model_user_registration,base.group_public,1,0,0.0

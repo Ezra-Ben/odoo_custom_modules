@@ -1,0 +1,32 @@
+<record id="view_user_registration_form" model="ir.ui.view">
+    <field name="name">user.registration.form</field>
+    <field name="model">res.users</field>
+    <field name="arch" type="xml">
+        <form string="User Registration">
+            <group>
+                <field name="name" string="Full Name" />
+                <field name="login" string="Email" />
+                <field name="password" string="Password" />
+                <field name="skills" string="Skills" />
+                <field name="portfolio_url" string="Portfolio URL" />
+                <field name="certifications" string="Certifications" />
+            </group>
+            <footer>
+                <button string="Register" type="object" name="action_register_user" class="btn-primary"/>
+            </footer>
+        </form>
+    </field>
+</record>
+
+ <!-- Action for User Registration Form -->
+    <record id="action_user_registration_form" model="ir.actions.act_window">
+        <field name="name">Register</field>
+        <field name="res_model">user_registration</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_user_registration_form"/>
+        <field name="target">new</field>
+    </record>
+
+ <!-- Submenu for user registration form -->
+    <menuitem id="user_registration_menu" name="User Registration" parent="user_profile_menu" 
+              action="action_user_registration_form" sequence="2" />

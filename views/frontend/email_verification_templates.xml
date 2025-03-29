@@ -1,0 +1,35 @@
+<odoo>
+    <!-- Success Page after Email Verification -->
+     <template id="email_verified_success" name="Email Verified">
+        <t t-call="website.layout">
+            <div class="container">
+                <h2>Email Verified ✅</h2>
+                <p>Your email has been successfully verified.</p>
+                <a href="/web/login" class="btn btn-primary">Login</a>
+            </div>
+        </t>
+    </template>
+
+    <!-- Failure Page for Invalid Token or Unsuccessful Verification -->
+    <template id="email_verified_failed">
+        <h2>Verification Failed!</h2>
+        <p>The verification link is either expired or invalid. Please try again or contact support.</p>
+    </template>
+
+    <!-- Check Email Page -->
+    <template id="check_email_template" name="Check Email Page">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <div class="alert alert-info text-center">
+                    <h2>Check Your Email</h2>
+                    <p>
+                        We have sent a verification link to your email.
+                        Please check your inbox and click the link to verify your account.
+                    </p>
+                    <a href="/" class="btn btn-primary">Homepage</a>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,54 @@
+<odoo>
+    <template id="user_profile_frontend_readonly_form" name="User Profile Form (Read-Only)">
+        <t t-call="website.layout">
+            <div id="wrapwrap" class="container mt32">
+                <h1>Your Profile</h1>
+                <t t-if="user">
+                <div class="row">
+                     <div class="col-md-12">
+                        <label for="profile_picture">Profile Picture</label>
+                        <!-- Display profile picture if available -->
+                        <t t-if="user.image_1920">
+                             <img t-att-src="'data:image/jpeg;base64,' + user.image_1920.decode('utf-8')" width="200"/>
+                        </t>
+                        <t t-else="">
+                             <img src="/web/static/img/user_placeholder.jpg" width="200px"/>  <!-- Default avatar -->
+                        </t>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="name">Name</label>
+                        <!-- Correct dynamic value and readonly using t-att-readonly -->
+                       <input type="text" name="name" id="name" class="form-control" t-att-value="user.name" t-att-readonly="True"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="portfolio_url">Portfolio URL</label>
+                        <!-- Correct dynamic value and readonly using t-att-readonly -->
+                        <input type="text" name="portfolio_url" id="portfolio_url" class="form-control" t-att-value="user.portfolio_url" t-att-readonly="True"/>
+                    </div>
+                    <div class="col-md-6">
+                            <label for="skills">Skills</label>
+                            <textarea name="skills" id="skills" class="form-control" t-att-readonly="True"><t t-esc="user.skills"/></textarea>
+                        </div>
+                    <div class="col-md-6">
+                        <label for="certifications">Certifications</label>
+                        <!-- Correct dynamic value inside textarea and readonly -->
+                        <textarea name="certifications" id="certifications" class="form-control" t-att-readonly="True"><t t-esc="user.certifications"/></textarea>
+                    </div>
+                   
+                    <div class="col-md-12">
+                        <!-- Update Profile Button -->
+                        <a href="/my/profile/update" class="btn btn-primary mt-3">Update Profile</a>
+                    </div>
+                </div>
+                </t>
+                <t t-else="">
+                 <div class="alert alert-warning">Please log in or register to view your profile.</div>
+                <div class="col-md-12">
+                    <a href="/web/login" class="btn btn-primary mt-3">Login</a>
+                    <a href="/user/register" class="btn btn-primary mt-3">Register</a>
+                </div> 
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,61 @@
+<odoo>
+<template id="registration_form" name="User Registration Form">
+    <t t-call="website.layout">
+        <div id="wrapwrap" class="container mt16">
+            <h2>User Registration</h2>
+            <form action="/user/register/submit" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required="true"/>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required="true"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" required="true"/>
+                </div>
+                <div class="form-group">
+                    <label for="skills">Skills</label>
+                    <textarea id="skills" name="skills" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="portfolio">Portfolio URL</label>
+                    <input type="url" id="portfolio" name="portfolio" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="certifications">Certifications</label>
+                    <textarea id="certifications" name="certifications" class="form-control"></textarea>
+                </div>
+
+
+              <!--User Groups-->
+                    <div class="form-group">
+                        <label for="groups_id">Select Groups</label>
+                        <t t-if="groups">
+                            <t t-foreach="groups" t-as="group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="groups_id" t-att-value="group.id"/>
+                                        <t t-esc="group.name"/>
+                                    </label>
+                                </div>
+                            </t>
+                        </t>
+                        <t t-else="">
+                            <p>No groups available.</p>
+                        </t>
+                    </div>
+
+                    <!-- CSRF Token-->  
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+               
+               <!--Submit Button-->
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+    </t>
+</template>
+</odoo>

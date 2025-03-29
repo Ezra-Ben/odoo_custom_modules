@@ -1,0 +1,11 @@
+<odoo>
+    <template id="registration_thank_you" name="Registration Thank You Page">
+        <t t-call="website.layout">
+            <div class="container">
+                <h1>Thank you for registering!</h1>
+                <p>We have sent you a verification email. Please check your inbox and verify your email to complete your registration.</p>
+                <a href="/web/login" class="btn btn-primary">Go to Login</a>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,17 @@
+<!--Registering the homepage-->
+<odoo>
+    <record id="custom_homepage_page" model="website.page">
+        <field name="name">Homepage</field>
+        <field name="url">/</field> <!-- Use your controller route -->
+        <field name="view_id" ref="user_registration.homepage_template"/>
+        <field name="website_published" eval="True"/>
+    </record>
+
+ <!-- Add Homepage to the Main Menu -->
+     <record id="menu_homepage" model="website.menu">
+        <field name="name">Home</field>
+        <field name="url">/</field> <!-- Ensure this points to the homepage URL -->
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" eval="1"/>
+    </record>
+</odoo>
