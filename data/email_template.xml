@@ -4,7 +4,7 @@
         <field name="model_id" ref="base.model_res_users"/>
         <field name="subject">Verify Your Email</field>
         <field name="email_from">mukismtpodoo@gmail.com</field>
-        <field name="email_to">${object.email}</field>
+        <field name="email_to">${object.login}</field>
         <field name="body_html"><![CDATA[
             <t t-set="email_body">
                 <p>Hello <t t-esc="object.name"/>,</p>
